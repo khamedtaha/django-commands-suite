@@ -26,7 +26,7 @@ class Command(BaseCommand):
             model = apps.get_model(app_label, model_name)
 
             generators = {
-                models.CharField: lambda f: fake.text(f.max_length)[: f.max_length],
+                models.CharField: lambda f: fake.text(getattr(f, "max_length", 20))[: getattr(f, "max_length", 20)],
                 models.TextField: lambda f: fake.paragraph(),
                 models.EmailField: lambda f: fake.email(),
                 models.URLField: lambda f: fake.url(),

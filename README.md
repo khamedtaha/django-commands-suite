@@ -12,3 +12,24 @@ Install the package via pip:
 
 ```bash
 pip install django-commands-suite
+
+
+---
+
+## **Usage**
+
+1. Add `django_commands_suite` to your `INSTALLED_APPS` in `settings.py`:
+
+    ```python
+    INSTALLED_APPS = [
+        ...
+        'django_commands_suite',
+    ]
+    ```
+
+2. Run migrations to create database tables
+
+    ```bash
+    python manage.py makemigrations django_commands_suite
+    python manage.py migrate
+    ```

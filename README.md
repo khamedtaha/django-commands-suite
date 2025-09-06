@@ -1,35 +1,150 @@
-# Django Commands Suite
+# Django Commands Suite (DCS)
 
-**Django Commands Suite** is a Django app that provides a **powerful set of management commands** ready to use in your Django projects.
+**Django Commands Suite** is a Django app that provides a **powerful suite of management commands** for your projects.  
+It helps automate repetitive tasks such as:
 
-This package helps you automate repetitive tasks like database backup, seeding, cache management, and logging command executions.
+- Database backup
+- Creating superusers quickly
+- Seeding fake data
+- Cache management
+- Logging command executions
+- Running custom commands via Web Terminal
 
 ---
 
-## **Installation**
+## Installation
 
-Install the package via pip:
+Install via pip:
 
 ```bash
 pip install django-commands-suite
 ```
 
+Add it to `INSTALLED_APPS` in your Django settings:
+
+```python
+INSTALLED_APPS = [
+    ...
+    'django_commands_suite',
+]
+```
+
+Run migrations to create necessary tables:
+
+```bash
+python manage.py makemigrations django_commands_suite
+python manage.py migrate
+```
+
 ---
 
-## **Usage**
+## Usage
 
-1. Add `django_commands_suite` to your `INSTALLED_APPS` in `settings.py`:
+### 1. Django Commands
 
-    ```python
-    INSTALLED_APPS = [
-        ...
-        'django_commands_suite',
-    ]
-    ```
+View all DCS commands:
 
-2. Run migrations to create database tables
+```bash
+python manage.py dcs_help
+```
 
-    ```bash
-    python manage.py makemigrations django_commands_suite
-    python manage.py migrate
-    ```
+Create a superuser quickly:
+
+```bash
+python manage.py quick_superuser
+```
+
+Backup your database:
+
+```bash
+python manage.py backup_db
+```
+
+Seed fake data for a model:
+
+```bash
+python manage.py dummy_data --model myapp.MyModel --count 10
+```
+
+---
+
+### 2. Web Terminal
+
+DCS provides a **Web Terminal** to run commands from the browser:
+
+- URL: `/dcs/terminal/`
+- Supports custom DCS commands prefixed with `dcs_`
+- Example commands:
+
+```text
+dcs_clear           # Clears the terminal
+dcs_quick_superuser # Creates a superuser
+dcs_backup_db       # Backup the database
+dcs_dummy_data      # Seed dummy data
+```
+
+- Features:
+
+  - Live output of commands
+  - Command history navigation (Arrow Up / Down)
+  - Execution count tracking
+  - Real-time clock display
+  - Customizable color theme
+  - Responsive layout for mobile and desktop
+
+---
+
+## Logging
+
+All commands run via DCS (CLI or Web Terminal) are logged automatically using `CommandLog`.  
+This allows you to keep track of:
+
+- Who ran a command
+- When it was run
+- Output and status (success or error)
+
+Example usage of logging in a custom command:
+
+```python
+from django_commands_suite.utils import log_command
+
+log_command("my_command", {"option": "value"}, "success", "Command output here")
+```
+
+---
+
+## Custom DCS Commands
+
+You can define your own commands prefixed with `dcs_` for Web Terminal usage.  
+Example:
+
+```python
+from django.core.management.base import BaseCommand
+from django_commands_suite.utils import log_command
+
+class Command(BaseCommand):
+    help = "Say hello"
+
+    def handle(self, *args, **kwargs):
+        msg = "Hello from DCS!"
+        self.stdout.write(msg)
+        log_command("dcs_hello", {}, "success", msg)
+```
+
+---
+
+## Contributing
+
+Contributions are welcome!  
+Feel free to:
+
+- Open issues
+- Submit pull requests
+- Suggest new commands
+
+---
+
+## License
+
+MIT License
+

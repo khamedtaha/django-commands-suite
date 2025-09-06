@@ -121,6 +121,41 @@ class Command(BaseCommand):
 
 ---
 
+## Utility Function: `run_command`
+
+`run_command` allows you to run any Django management command from code and automatically logs its output and status in `CommandLog`.
+
+### Signature
+
+```python
+run_command(command_name: str, *args, **kwargs)
+```
+
+### Parameters
+
+- `command_name` (str): Django command name (`"quick_superuser"`, etc.)
+- `*args`: Positional arguments for the command
+- `**kwargs`: Keyword arguments/options for the command
+
+### Example Usage
+
+```python
+from django_commands_suite.utils import run_command
+
+# Run quick_superuser
+output = run_command("quick_superuser")
+print(output)
+
+```
+
+This function is great for **automation scripts**, **seeders**, or **custom management tasks** in Django projects.
+
+---
+
+
+
+
+
 ## Contributing
 
 Contributions are welcome!  

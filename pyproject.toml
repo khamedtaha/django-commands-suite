@@ -10,7 +10,7 @@ authors = [{name = "Mohammed taha", email = "net@khamedspace.com"}]
 license = {text = "MIT"}
 readme = "README.md"
 keywords = ["django", "commands", "management", "suite", "log"]
-dependencies = ["Django>=5.0"]
+dependencies = ["Django>=5.0" ,"Faker>=18.0.0"]
 
 [project.urls]
 homepage = "https://github.com/khamedtaha/django-commands-suite"

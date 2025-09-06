@@ -73,24 +73,12 @@ python manage.py dummy_data --model myapp.MyModel --count 10
 DCS provides a **Web Terminal** to run commands from the browser:
 
 - URL: `/dcs/terminal/`
-- Supports custom DCS commands prefixed with `dcs_`
-- Example commands:
+- Supports custom DCS commands  
+- Example commands :
 
 ```text
-dcs_clear           # Clears the terminal
-dcs_quick_superuser # Creates a superuser
-dcs_backup_db       # Backup the database
-dcs_dummy_data      # Seed dummy data
+quick_superuser # Creates a superuser
 ```
-
-- Features:
-
-  - Live output of commands
-  - Command history navigation (Arrow Up / Down)
-  - Execution count tracking
-  - Real-time clock display
-  - Customizable color theme
-  - Responsive layout for mobile and desktop
 
 ---
 

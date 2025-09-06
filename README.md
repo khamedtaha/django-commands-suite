@@ -12,7 +12,7 @@ Install the package via pip:
 
 ```bash
 pip install django-commands-suite
-
+```
 
 ---
 

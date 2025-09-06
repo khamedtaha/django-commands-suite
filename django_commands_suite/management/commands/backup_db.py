@@ -8,11 +8,18 @@ from django.utils import timezone
 
 class Command(BaseCommand):
    """
-   EX : python manage.py backup_db --db=sqlite
+      Backup the database into a `.sql` file.
 
+      Supported databases:
+      - SQLite
+      - PostgreSQL
+      - MySQL
+
+      Examples:
+         python manage.py backup_db --db=sqlite
    """
-   help = "Simple backup for SQLite, PostgreSQL, or MySQL."
-
+   help = "Backup your database (SQLite, PostgreSQL, or MySQL)."
+   
    def add_arguments(self, parser):
          parser.add_argument(
             "--db",

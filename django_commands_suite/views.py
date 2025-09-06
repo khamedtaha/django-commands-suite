@@ -5,4 +5,4 @@ from django.shortcuts import render
 
 
 def terminal_page(request):
-   return render(request, "webterminal.html")
+   return render(request, "django_commands_suite/webterminal.html")

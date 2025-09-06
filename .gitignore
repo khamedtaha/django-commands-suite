@@ -1,0 +1,32 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environments
+env/
+
+
+# Build directories
+build/
+dist/
+*.egg-info/
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+
+# Database files (if any local testing)
+*.sqlite3
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# requirements
+requirements.txt

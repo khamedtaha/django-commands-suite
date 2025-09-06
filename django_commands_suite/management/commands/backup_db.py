@@ -4,7 +4,7 @@ import shutil
 from django.conf import settings
 from django.core.management.base import BaseCommand
 from django.utils import timezone
-
+from django_commands_suite.utils import log_command
 
 class Command(BaseCommand):
    """
@@ -71,7 +71,9 @@ class Command(BaseCommand):
             with open(output_file, "w") as f:
                subprocess.run(cmd, stdout=f, check=True)
 
+         log_command("backup_db" , args , "success" ,f"backup saved in {output_file}")
          self.stdout.write(self.style.SUCCESS(f"Backup saved to {output_file}"))
 
       except Exception as e:
+            log_command("backup_db" , args , "error" ,f"Backup failed: {e}")
             self.stdout.write(self.style.ERROR(f"Backup failed: {e}"))

@@ -17,5 +17,5 @@ class Command(BaseCommand):
             log_command("quick_superuser", args ,"success","Superuser 'djadmin' created successfully")
             self.stdout.write(self.style.SUCCESS("Superuser 'djadmin' created successfully!"))
       else:
-            log_command("quick_superuser", args ,"success", "Superuser 'djadmin' already exists.")
+            log_command("quick_superuser", args ,"error", "Superuser 'djadmin' already exists.")
             self.stdout.write(self.style.WARNING("Superuser 'djadmin' already exists."))

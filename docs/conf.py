@@ -33,10 +33,3 @@ html_theme_options = {
     "navigation_depth": 4,
     "titles_only": False,
 }
-
-# -- Language -------------------------------------------------
-language = "en"  # change to "ar" if you want Arabic UI
-
-# -- Custom CSS (for fonts like Tajawal) -------------------------------------
-def setup(app):
-    app.add_css_file("custom.css")

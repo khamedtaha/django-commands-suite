@@ -1,10 +1,17 @@
-Welcome to django-commands-suite's documentation!
-================================================
+=====================
+django-commands-suite
+=====================
+
+Django Commands Suite (DCS)
+Django Commands Suite is a Django app that provides a powerful suite of management commands for your projects.
+
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents :
-
+   :caption: User Guide
+   
+   guide/installation
+   
    modules
 
 Indices and tables

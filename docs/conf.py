@@ -5,6 +5,7 @@ import sys
 
 # -- Project information -----------------------------------------------------
 project = "django-commands-suite"
+copyright = '2025, Mohammed taha Khamed '
 author = "Mohammed taha Khamed"
 version = "0.2"
 release = "0.2.5"

@@ -127,3 +127,60 @@ Programmatic Access
    for log in recent:
       print(f"{log.name}: {log.status}")
 
+
+Rub Command in views
+--------------------
+Sometimes you may want to execute Django management commands directly from a view 
+(for example, creating a backup from the dashboard).  
+With ``django-commands-suite``, you can easily achieve this while keeping your views secure.
+
+
+In this example, we define a decorator to ensure that only superusers can access the view.  
+Then, inside the view, we call ``run_command`` to trigger a management command.
+
+.. code-block:: python
+   :caption: project/core/decorators.py
+
+   from functools import wraps
+   from django.contrib.auth.decorators import login_required
+   from django.shortcuts import redirect
+
+   def is_superuser_admin(view_func):
+       @wraps(view_func)
+       @login_required
+       def _wrapped_view(request, *args, **kwargs):
+           if request.user.is_superuser:
+               return view_func(request, *args, **kwargs)
+           return redirect("main")
+       return _wrapped_view
+
+
+.. code-block:: python
+   :caption: project/core/views.py
+
+   from django.shortcuts import render
+   from django.contrib import messages
+   from django_commands_suite.utils import run_command
+   from .decorators import is_superuser_admin
+
+
+   @is_superuser_admin
+   def backup_db_view(request):
+       if request.method == "POST":
+           type_db = request.POST.get("type_db")
+           output = run_command("backup_db", db=type_db)
+           messages.success(request, f"Backup completed: {output}")
+
+       return render(request, "core/Dash/backup.html")
+
+* Example form in ``backup.html`` could look like:
+.. code-block:: html
+
+   <form method="post">
+       {% csrf_token %}
+       <select name="type_db">
+           <option value="sqlite">SQLite</option>
+           <option value="postgres">Postgres</option>
+       </select>
+       <button type="submit">Run Backup</button>
+   </form>

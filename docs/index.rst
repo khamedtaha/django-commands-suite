@@ -11,6 +11,7 @@ Django Commands Suite is a Django app that provides a powerful suite of manageme
    :caption: User Guide
    
    guide/installation
+   guide/get_started
    
    
 

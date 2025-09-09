@@ -5,19 +5,17 @@ import sys
 
 # -- Project information -----------------------------------------------------
 project = "django-commands-suite"
-author = "Mohammed taha"
-release = "0.1.5"
-
+author = "Mohammed taha Khamed"
+version = "0.2"
+release = "0.2.5"
 # -- General configuration ---------------------------------------------------
 extensions = [
     "sphinx.ext.autodoc",        
     "sphinx.ext.viewcode",       
     "sphinx.ext.napoleon",     
 ]
-
 templates_path = ["_templates"]
 exclude_patterns = []
-
 # -- Options for HTML output -------------------------------------------------
 html_theme = "furo"
 html_static_path = ["_static"]

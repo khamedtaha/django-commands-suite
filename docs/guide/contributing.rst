@@ -34,13 +34,8 @@ Development Setup
       pip install -e .[dev]
       pip install -r requirements-dev.txt
 
-5. **Set Up Pre-commit Hooks**
 
-   .. code-block:: bash
-
-      pre-commit install
-
-6. **Run Tests**
+5. **Run Tests**
 
    .. code-block:: bash
 

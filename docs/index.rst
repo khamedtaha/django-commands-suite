@@ -12,7 +12,7 @@ Django Commands Suite is a Django app that provides a powerful suite of manageme
    
    guide/installation
    
-   modules
+   
 
 Indices and tables
 ==================
